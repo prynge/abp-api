@@ -1,0 +1,22 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+file_handler:
+    path: /api/arrivageFiles/{file}
+    controller: App\Controller\FileObjectController
+    methods: GET|HEAD
+monthly:
+    path: /api/monthly/{month}/{year}
+    controller: App\Controller\MonthlyAutoController
+    methods: GET|HEAD
+myprofile:
+    path: /api/myprofile
+    controller: App\Controller\UserProfileController
+    methods: GET|HEAD
+create_user:
+    path: /api/users
+    controller: App\Controller\CreateUserController
+    methods: POST
+authentication_token:
+    path: /login
+    methods: ['POST']

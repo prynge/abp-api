@@ -1,0 +1,87 @@
+<?php
+
+namespace App\Entity;
+
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Repository\ParcRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
+/**
+ * @ORM\Entity(repositoryClass=ParcRepository::class)
+ */
+class Parc
+{
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @Groups({"summary:read"})
+     * @Groups({"summary:read"})
+     * @ORM\Column(type="string", length=255)
+     */
+    private $parc_name;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Auto::class, mappedBy="parc")
+     */
+    private $autos;
+
+    public function __construct()
+    {
+        $this->autos = new ArrayCollection();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getParcName(): ?string
+    {
+        return $this->parc_name;
+    }
+
+    public function setParcName(string $parc_name): self
+    {
+        $this->parc_name = $parc_name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Auto[]
+     */
+    public function getAutos(): Collection
+    {
+        return $this->autos;
+    }
+
+    public function addAuto(Auto $auto): self
+    {
+        if (!$this->autos->contains($auto)) {
+            $this->autos[] = $auto;
+            $auto->setParc($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAuto(Auto $auto): self
+    {
+        if ($this->autos->removeElement($auto)) {
+            // set the owning side to null (unless already changed)
+            if ($auto->getParc() === $this) {
+                $auto->setParc(null);
+            }
+        }
+
+        return $this;
+    }
+}
