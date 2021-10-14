@@ -18,5 +18,5 @@ create_user:
     controller: App\Controller\CreateUserController
     methods: POST
 authentication_token:
-    path: /api/login
+    path: /login
     methods: ['POST']
