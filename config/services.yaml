@@ -35,10 +35,11 @@ services:
         arguments:
             $em: '@doctrine.orm.default_entity_manager'
         tags: [controller.service_arguments]
-    App\Controller\UserProfileController:
-        arguments:
-            $security: '@security.helper'
-        tags: [controller.service_arguments]
     
     app.jwt_token_authenticator:
         class: App\Security\Guard\JWTTokenAuthenticator
+    
+    acme_api.event.authentication_success_listener:
+        class: App\EventListener\JWTCreatedEventListener
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccessResponse }

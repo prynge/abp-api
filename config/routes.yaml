@@ -9,10 +9,6 @@ monthly:
     path: /api/monthly/{month}/{year}
     controller: App\Controller\MonthlyAutoController
     methods: GET|HEAD
-myprofile:
-    path: /myprofile
-    controller: App\Controller\UserProfileController
-    methods: GET|HEAD
 create_user:
     path: /api/users
     controller: App\Controller\CreateUserController
