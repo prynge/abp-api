@@ -24,10 +24,7 @@ use App\Controller\CreateUserController;
  *          },
  *      },
  *      collectionOperations={
- *          "get"={"security"="is_granted('ROLE_IMPORTER')"},  
- *          "post"={
- *              "controller"=CreateUserController::class,
- *              "security"="is_granted('ROLE_IMPORTER')"},
+ *          
  *          "user_profile"={
  *              "method"="GET",
  *              "path"="/myprofile",
