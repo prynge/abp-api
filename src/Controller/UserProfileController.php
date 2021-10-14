@@ -18,7 +18,7 @@ class UserProfileController extends AbstractController
   }
 
 
-  public function __invoke($data)
+  public function __invoke()
   {
     $user = $this->security->getUser();
     

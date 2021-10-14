@@ -35,6 +35,10 @@ services:
         arguments:
             $em: '@doctrine.orm.default_entity_manager'
         tags: [controller.service_arguments]
+    App\Controller\UserProfileController:
+        arguments:
+            $security: '@security.helper'
+        tags: [controller.service_arguments]
     
     app.jwt_token_authenticator:
         class: App\Security\Guard\JWTTokenAuthenticator
