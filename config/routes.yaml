@@ -10,7 +10,7 @@ monthly:
     controller: App\Controller\MonthlyAutoController
     methods: GET|HEAD
 myprofile:
-    path: /api/myprofile
+    path: /myprofile
     controller: App\Controller\UserProfileController
     methods: GET|HEAD
 create_user:
