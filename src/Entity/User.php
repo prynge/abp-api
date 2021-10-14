@@ -15,23 +15,6 @@ use App\Controller\CreateUserController;
 
 /**
  * @ApiResource(
- *     normalizationContext={"groups"={"user:read"}},
- *     denormalizationContext={"groups"={"user:write"}},
- *      itemOperations={
- *          "get"={
- *              "path"="/myprofile",
- *              "controller"=UserProfileController::class,
- *          },
- *      },
- *      collectionOperations={
- *          
- *          "user_profile"={
- *              "method"="GET",
- *              "path"="/myprofile",
- *              "controller"=UserProfileController::class,
- *              
- *          },
- *      },
  * )
  * @UniqueEntity(fields={"email"})
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
